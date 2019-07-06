@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import mac from "../macdonaldslogo.png";
 import pepsi from "../pepsilogo.jpg";
+import placeholder from "../placeholder.png";
 
 export default class ProductAdmin extends Component {
   render() {
@@ -11,8 +12,10 @@ export default class ProductAdmin extends Component {
           <div className="column is-one-fifth">
             {this.props.id === 1 ? (
               <img src={mac} alt="Logo" />
-            ) : (
+            ) : this.props.id === 2 ? (
               <img src={pepsi} alt="Logo" />
+            ) : (
+              <img src={placeholder} alt="Logo" />
             )}
           </div>
 
