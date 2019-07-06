@@ -1,5 +1,5 @@
 #![no_std]
-use contract_sdk::{prelude::*, types::AccountId};
+use contract_sdk::{prelude::*};
 use ink_lang::contract;
 
 use parity_codec::{
@@ -16,7 +16,7 @@ struct JobState{
   started: bool, 
   completed: bool, 
   accepted: bool,
-  worker_public_key: H256
+  worker_public_key: [u8; 32]
 }
 
 contract! {
