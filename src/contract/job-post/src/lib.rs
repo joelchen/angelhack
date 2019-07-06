@@ -8,8 +8,17 @@ use parity_codec::{
 };
 
 use ink_core::{
+    env::{
+        self,
+        ContractEnv,
+        DefaultSrmlTypes,
+        EnvTypes,
+        Env as _,
+    },
     storage
 };
+
+type AccountId = <ContractEnv<DefaultSrmlTypes> as EnvTypes>::AccountId;
 
 #[derive(Debug, Clone, PartialEq, Eq, Encode, Decode)]
 struct JobState{
@@ -72,7 +81,7 @@ contract! {
         started: false, 
         completed: false, 
         accepted: false,
-        worker_public_key: [0; u32]
+        worker_public_key: [0; 32]
       });
     }
   }
