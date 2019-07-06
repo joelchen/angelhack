@@ -21,6 +21,7 @@ import UnprotectedRoute from "./components/auth/UnprotectedRoute";
 import ProjectStatus from "./components/ProjectStatus";
 import Disputes from "./components/Disputes";
 import PostJob from "./components/PostJob";
+import ReviewWork from "./components/ReviewWork";
 library.add(faEdit);
 
 class App extends Component {
@@ -140,6 +141,12 @@ class App extends Component {
                   exact
                   path="/postjob"
                   component={PostJob}
+                  auth={authProps}
+                />
+                <ProtectedRoute
+                  exact
+                  path="/reviewwork"
+                  component={ReviewWork}
                   auth={authProps}
                 />
               </Switch>
