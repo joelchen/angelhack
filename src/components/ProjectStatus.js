@@ -29,7 +29,7 @@ export default class ProjectStatus extends Component {
     const workerPrivateKey = hexToU8a(
       "0x6c05bb15a5cc326b5ae202dbdf6481e2bc0352fd221306a0da07af53b1d95406"
     );
-    const contractAddr = "5FRpshfNDSrSirxiXczbtxhVmfDWftmUV8BDUJaLW4ECDgVK";
+    const contractAddr = "5GbcjUjH2DHVDkmMvW72R1CZ29uBwUP33iC39mFrpMyqtpLU";
     const keyring = new SimpleKeyring();
     let kp;
     if (workerPrivateKey) {
@@ -66,7 +66,7 @@ export default class ProjectStatus extends Component {
     const workerPrivateKey = hexToU8a(
       "0x6c05bb15a5cc326b5ae202dbdf6481e2bc0352fd221306a0da07af53b1d95406"
     );
-    const contractAddr = "5FRpshfNDSrSirxiXczbtxhVmfDWftmUV8BDUJaLW4ECDgVK";
+    const contractAddr = "5GbcjUjH2DHVDkmMvW72R1CZ29uBwUP33iC39mFrpMyqtpLU";
     const keyring = new SimpleKeyring();
     let kp;
     if (workerPrivateKey) {
@@ -161,3 +161,6 @@ export default class ProjectStatus extends Component {
     );
   }
 }
+
+// cennz-cli script:run -c wss://mx-angelhack-angelbackbc.ap1.onfinality.io contract-deploy /Users/ooijithong/projects/angelhack/src/contract/job-post/target/job-post.wasm 5F4eWAFjLKSpyPccSwvY55KdhT2bWwqwMHbbzHD462hkvN1t
+// cennz-cli script:run -c wss://mx-angelhack-angelbackbc.ap1.onfinality.io contract-instantiate 5F4eWAFjLKSpyPccSwvY55KdhT2bWwqwMHbbzHD462hkvN1t 0x192b7cecde60c0a7daf889b6a7cf143593efcf1c9f0fab678c4b70d33ae82e24 /Users/ooijithong/projects/angelhack/src/contract/job-post/target/jobPost.json 1000 20000
