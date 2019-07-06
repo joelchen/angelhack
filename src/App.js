@@ -21,6 +21,7 @@ import UnprotectedRoute from "./components/auth/UnprotectedRoute";
 import ProjectStatus from "./components/ProjectStatus";
 import Disputes from "./components/Disputes";
 import PostJob from "./components/PostJob";
+import ReviewWork from "./components/ReviewWork";
 import HouseholdChores from "./components/HouseholdChores";
 import Babysitter from "./components/Babysitter";
 import Tuition from "./components/Tuition";
@@ -146,6 +147,12 @@ class App extends Component {
                   exact
                   path="/postjob"
                   component={PostJob}
+                  auth={authProps}
+                />
+                <ProtectedRoute
+                  exact
+                  path="/reviewwork"
+                  component={ReviewWork}
                   auth={authProps}
                 />
                 <ProtectedRoute

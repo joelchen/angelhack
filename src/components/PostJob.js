@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from "react";
-import axios from "axios";
 
 export default class PostJob extends Component {
   render() {
@@ -8,30 +7,41 @@ export default class PostJob extends Component {
         <section className="section">
           <div className="container">
             <form>
-              <div class="field">
-                <label class="label">Project Name</label>
-                <div class="control">
-                  <input class="input" type="text" placeholder="Text input" />
+              <div className="field">
+                <label className="label">Project Name</label>
+                <div className="control">
+                  <input
+                    className="input"
+                    type="text"
+                    placeholder="Input Porject Name"
+                  />
                 </div>
               </div>
 
-              <div class="field">
-                <label class="label">Project Requirements</label>
-                <div class="control">
-                  <textarea class="textarea" placeholder="Textarea" />
+              <div className="field">
+                <label className="label">Project Requirements</label>
+                <div className="control">
+                  <textarea
+                    className="textarea"
+                    placeholder="Input project description"
+                  />
                 </div>
               </div>
 
-              <div class="field">
-                <label class="label">Price</label>
-                <div class="control">
-                  <input class="input" type="text" placeholder="Text input" />
+              <div className="field">
+                <label className="label">Price</label>
+                <div className="control">
+                  <input
+                    className="input"
+                    type="text"
+                    placeholder="Input Project Price"
+                  />
                 </div>
               </div>
 
-              <div class="field is-grouped">
-                <div class="control">
-                  <button class="button is-link">Submit</button>
+              <div className="field is-grouped">
+                <div className="control">
+                  <button className="button is-link">Submit</button>
                 </div>
               </div>
             </form>

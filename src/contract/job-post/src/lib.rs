@@ -1,4 +1,5 @@
 #![no_std]
+use contract_sdk::{prelude::*};
 use ink_lang::contract;
 
 use parity_codec::{
@@ -12,9 +13,8 @@ use ink_core::{
 
 #[derive(Debug, Clone, PartialEq, Eq, Encode, Decode)]
 struct JobState{
-  started: bool, 
   completed: bool, 
-  accepted: bool,
+  accepted: bool
 }
 
 contract! {
@@ -26,42 +26,39 @@ contract! {
     job: storage::Value<JobState>
   }
 
+  event ContractOutput { result: bool }
+
   // Define contract functions
     impl JobPost {
         
         // api to trigger boolean
-        pub(external) fn started(&mut self) {
-            self.job.started = true;
-        }
-
         pub(external) fn completed(&mut self) {
             self.job.completed = true;
+            env.emit(ContractOutput { result: self.job.completed });
+            env.emit(ContractOutput { result: self.job.accepted });
+            let worker_public_key = env.caller();
         }
 
         pub(external) fn accepted(&mut self) {
             self.job.accepted = true;
+            env.emit(ContractOutput { result: self.job.completed });
+            env.emit(ContractOutput { result: self.job.accepted });
+            let worker_public_key = env.caller();
+            Runtime::call(
+                Decode::decode(&mut &worker_public_key.encode()[..]).expect("it is an accountID"),
+                0,      // nested gas allocation, `0` means use current meter reading
+                20,
+                &vec![], // empty input payload
+            );
         }
-
-        // pub(external) fn spin(&self, paymentAmount: i32, worker: AccountId, jobStarted: bool, jobCompleted: bool, jobAccepted: bool) {
-            
-        //     if jobCompleted == true && jobAccepted == true {
-        //         Runtime::call(
-        //             worker,
-        //             0,      // nested gas allocation, `0` means use current meter reading
-        //             AccountId.into(),
-        //             &vec![], // empty input payload
-        //         );
-        //     }
-        // }
     }
 
   // Define contract instantiation logic
   impl Deploy for JobPost {
     fn deploy(&mut self) {
       self.job.set(JobState {
-        started: false, 
         completed: false, 
-        accepted: false,
+        accepted: false
       });
     }
   }
