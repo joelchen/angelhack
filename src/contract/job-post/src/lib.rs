@@ -9,11 +9,7 @@ use parity_codec::{
 
 use ink_core::{
     env::{
-        self,
-        ContractEnv,
         DefaultSrmlTypes,
-        EnvTypes,
-        Env as _,
     },
     storage
 };
@@ -25,7 +21,7 @@ struct JobState{
   started: bool, 
   completed: bool, 
   accepted: bool,
-  worker_public_key: ink_core::env::types::AccountId
+  worker_public_key: AccountId
 }
 
 contract! {
@@ -81,7 +77,7 @@ contract! {
         started: false, 
         completed: false, 
         accepted: false,
-        worker_public_key: [0; 32]
+        worker_public_key: [0; 32].into(),
       });
     }
   }
