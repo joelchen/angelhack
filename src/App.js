@@ -21,6 +21,12 @@ import UnprotectedRoute from "./components/auth/UnprotectedRoute";
 import ProjectStatus from "./components/ProjectStatus";
 import Disputes from "./components/Disputes";
 import PostJob from "./components/PostJob";
+import HouseholdChores from "./components/HouseholdChores";
+import Babysitter from "./components/Babysitter";
+import Tuition from "./components/Tuition";
+import Groceries from "./components/Groceries";
+import Food from "./components/Food";
+import PackageDelivery from "./components/PackageDelivery";
 library.add(faEdit);
 
 class App extends Component {
@@ -140,6 +146,42 @@ class App extends Component {
                   exact
                   path="/postjob"
                   component={PostJob}
+                  auth={authProps}
+                />
+                <ProtectedRoute
+                  exact
+                  path="/household-chores"
+                  component={HouseholdChores}
+                  auth={authProps}
+                />
+                <ProtectedRoute
+                  exact
+                  path="/babysitter"
+                  component={Babysitter}
+                  auth={authProps}
+                />
+                <ProtectedRoute
+                  exact
+                  path="/tuition"
+                  component={Tuition}
+                  auth={authProps}
+                />
+                <ProtectedRoute
+                  exact
+                  path="/groceries"
+                  component={Groceries}
+                  auth={authProps}
+                />
+                <ProtectedRoute
+                  exact
+                  path="/food"
+                  component={Food}
+                  auth={authProps}
+                />
+                <ProtectedRoute
+                  exact
+                  path="/package-delivery"
+                  component={PackageDelivery}
                   auth={authProps}
                 />
               </Switch>
