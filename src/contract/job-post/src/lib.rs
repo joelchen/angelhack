@@ -16,7 +16,7 @@ struct JobState{
   started: bool, 
   completed: bool, 
   accepted: bool,
-  worker_public_key: [u8; 32]
+  worker_public_key: ink_core::env::srml::types::AccountId
 }
 
 contract! {
@@ -72,7 +72,7 @@ contract! {
         started: false, 
         completed: false, 
         accepted: false,
-        worker_public_key: ""
+        worker_public_key: Default::default()
       });
     }
   }
