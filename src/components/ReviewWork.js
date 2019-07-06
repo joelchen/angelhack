@@ -41,15 +41,9 @@ export default class ProjectStatus extends Component {
     const workerPrivateKey = hexToU8a(
       "0x6c05bb15a5cc326b5ae202dbdf6481e2bc0352fd221306a0da07af53b1d95406"
     );
-    const contractAddr = "5Fj9RTuvA1zAhepp9eVc68ZBf1Mcfg7AV4TjfT2WJmfhnV7Q";
+    const contractAddr = "5DYAVff4vQCz1fJjZP6F3mGrP8LCKgqWnR768M5ZsTA2DKNy";
     const keyring = new SimpleKeyring();
-    let kp;
-    if (workerPrivateKey) {
-      const seed = workerPrivateKey;
-      kp = keyring.addFromSeed(seed);
-    } else {
-      kp = keyring.addFromUri(`//${workerPrivateKey}`);
-    }
+    let kp = keyring.addFromSeed(workerPrivateKey);
     const abi = new ContractAbi(jobPostJson);
     const data = abi.messages.accepted();
     const tx = api.tx.contract.call(contractAddr, 0, 20000, data);

@@ -1,0 +1,1 @@
+{"name":"JobPost","deploy":{"args":[]},"messages":[{"name":"completed","selector":3756528699,"mutates":true,"args":[],"return_type":null},{"name":"accepted","selector":265184166,"mutates":true,"args":[],"return_type":null}]}

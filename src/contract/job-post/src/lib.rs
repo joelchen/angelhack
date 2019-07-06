@@ -27,7 +27,7 @@ contract! {
   }
 
   event ContractOutput { result: bool }
-
+  //
   // Define contract functions
     impl JobPost {
         
@@ -36,7 +36,6 @@ contract! {
             self.job.completed = true;
             env.emit(ContractOutput { result: self.job.completed });
             env.emit(ContractOutput { result: self.job.accepted });
-            let worker_public_key = env.caller();
         }
 
         pub(external) fn accepted(&mut self) {
@@ -47,7 +46,7 @@ contract! {
             Runtime::call(
                 Decode::decode(&mut &worker_public_key.encode()[..]).expect("it is an accountID"),
                 0,      // nested gas allocation, `0` means use current meter reading
-                20,
+                50,
                 &vec![], // empty input payload
             );
         }

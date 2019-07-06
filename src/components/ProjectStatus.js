@@ -13,7 +13,7 @@ import { ContractAbi } from "@plugnet/types";
 
 import Project from "./Project";
 
-const jobPostJson = require("../abi/jobPost.json");
+const jobPostJson = require("../contract/JobPost.json");
 
 const submittedTextStyle = {
   display: "none"
@@ -29,7 +29,7 @@ export default class ProjectStatus extends Component {
         projectname: "Macdonalds Rework Online Menu",
         description:
           "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-        price: 20
+        price: 50
       },
       {
         id: 2,
@@ -37,7 +37,7 @@ export default class ProjectStatus extends Component {
         projectname: "Pepsi Microsite Redesign",
         description:
           "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-        price: 20
+        price: 50
       }
     ]
   };
@@ -53,17 +53,12 @@ export default class ProjectStatus extends Component {
     const workerPrivateKey = hexToU8a(
       "0x6c05bb15a5cc326b5ae202dbdf6481e2bc0352fd221306a0da07af53b1d95406"
     );
-    const contractAddr = "5GbcjUjH2DHVDkmMvW72R1CZ29uBwUP33iC39mFrpMyqtpLU";
+    const contractAddr = "5DYAVff4vQCz1fJjZP6F3mGrP8LCKgqWnR768M5ZsTA2DKNy";
     const keyring = new SimpleKeyring();
-    let kp;
-    if (workerPrivateKey) {
-      const seed = workerPrivateKey;
-      kp = keyring.addFromSeed(seed);
-    } else {
-      kp = keyring.addFromUri(`//${workerPrivateKey}`);
-    }
+    let kp = keyring.addFromSeed(workerPrivateKey);
     const abi = new ContractAbi(jobPostJson);
-    const data = abi.messages.started();
+    console.log(abi);
+    const data = abi.messages.completed();
     const tx = api.tx.contract.call(contractAddr, 0, 20000, data);
     await tx.signAndSend(kp, ({ events = [], status }) => {
       console.log(status);
@@ -119,7 +114,7 @@ export default class ProjectStatus extends Component {
 
               <div className="marker m2 timeline-icon two">
                 <i className="fa fa-check" />
-                <span className="marker-text">Assigned</span>
+                <span className="marker-text">Started</span>
               </div>
 
               <div className="marker m3 timeline-icon three">
@@ -177,4 +172,4 @@ export default class ProjectStatus extends Component {
 }
 
 // cennz-cli script:run -c wss://mx-angelhack-angelbackbc.ap1.onfinality.io contract-deploy /Users/ooijithong/projects/angelhack/src/contract/job-post/target/job-post.wasm 5F4eWAFjLKSpyPccSwvY55KdhT2bWwqwMHbbzHD462hkvN1t
-// cennz-cli script:run -c wss://mx-angelhack-angelbackbc.ap1.onfinality.io contract-instantiate 5F4eWAFjLKSpyPccSwvY55KdhT2bWwqwMHbbzHD462hkvN1t 0xc34732f396541fb51c3349cec78fe35701d2d128c9fc3fb48b2295eb83915de5 /Users/ooijithong/projects/angelhack/src/contract/job-post/target/JobPost.json 1000 20000
+// cennz-cli script:run -c wss://mx-angelhack-angelbackbc.ap1.onfinality.io contract-instantiate 5F4eWAFjLKSpyPccSwvY55KdhT2bWwqwMHbbzHD462hkvN1t 0xe6ffc3079d4c4390f7c34a1a4e5554a6a487fade4abcf0efee7983b4d6b709c1 /Users/ooijithong/projects/angelhack/src/contract/job-post/target/JobPost.json 1000 20000
