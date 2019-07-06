@@ -13,13 +13,14 @@ export default class Dispute extends Component {
           <Fragment>
             <Link to="">Review requester info</Link> <br />
             <Link to="">Review worker result</Link> <br /> <br />
-            <button className="button is-large">Refund Requester</button> &nbsp;
-            <button className="button is-large">
+            <button className="button is-medium">Refund Requester</button>{" "}
+            &nbsp;
+            <button className="button is-medium">
               Release payment to Worker
             </button>
           </Fragment>
         ) : (
-          <button className="button is-large">
+          <button className="button is-medium">
             Accept invitation as Arbitrator
           </button>
         )}
