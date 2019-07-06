@@ -11,7 +11,7 @@ import { waitReady } from "@plugnet/wasm-crypto";
 
 import { ContractAbi } from "@plugnet/types";
 
-const jobPostJson = require("../abi/jobPost.json");
+const jobPostJson = require("../contract/job-post/target/JobPost.json");
 
 export default class ProjectStatus extends Component {
   state = {
@@ -20,27 +20,16 @@ export default class ProjectStatus extends Component {
 
   requester = {};
 
-  onClickHandle = async () => {
+  onClickStartHandle = async () => {
     await waitReady();
-
     const api = await Api.create({
       provider: "wss://mx-angelhack-angelbackbc.ap1.onfinality.io"
     });
-
-    // const requester = "5F4eWAFjLKSpyPccSwvY55KdhT2bWwqwMHbbzHD462hkvN1t";
-    // worker account on the blockchain
-    // const worker = "5EAZDPmWiPK25YiDU3UXbBWqCJfnYUFfMi1wJa7WHGjXJtbw";
-
     // worker account private key, must copy when account is first created
     const workerPrivateKey = hexToU8a(
       "0x6c05bb15a5cc326b5ae202dbdf6481e2bc0352fd221306a0da07af53b1d95406"
     );
-
-    const contractAddr = "5CZrg3CWQVF9gySvt3UHVN4HXSFEpsaj6i71fB2vYUDx4EfS";
-
-    // const keyring = new Keyring({ type: "ed25519" });
-    // const keypair = keyring.addFromSeed(workerPrivateKey);
-
+    const contractAddr = "5FRpshfNDSrSirxiXczbtxhVmfDWftmUV8BDUJaLW4ECDgVK";
     const keyring = new SimpleKeyring();
     let kp;
     if (workerPrivateKey) {
@@ -49,15 +38,60 @@ export default class ProjectStatus extends Component {
     } else {
       kp = keyring.addFromUri(`//${workerPrivateKey}`);
     }
-    // await wallet.addKeyring(keyring);
-
     const abi = new ContractAbi(jobPostJson);
-
     const data = abi.messages.started();
     const tx = api.tx.contract.call(contractAddr, 0, 20000, data);
+    await tx.signAndSend(kp, ({ events = [], status }) => {
+      console.log(status);
+      events.forEach(({ phase, event: { data, method, section } }) => {
+        console.log(
+          phase.toString() +
+            " : " +
+            section +
+            "." +
+            method +
+            " " +
+            data.toString()
+        );
+      });
+    });
+  };
 
-    const result = await tx.signAndSend(kp);
-    console.log(result.toHex());
+  onClickFinalisedHandle = async () => {
+    await waitReady();
+    const api = await Api.create({
+      provider: "wss://mx-angelhack-angelbackbc.ap1.onfinality.io"
+    });
+    // worker account private key, must copy when account is first created
+    const workerPrivateKey = hexToU8a(
+      "0x6c05bb15a5cc326b5ae202dbdf6481e2bc0352fd221306a0da07af53b1d95406"
+    );
+    const contractAddr = "5FRpshfNDSrSirxiXczbtxhVmfDWftmUV8BDUJaLW4ECDgVK";
+    const keyring = new SimpleKeyring();
+    let kp;
+    if (workerPrivateKey) {
+      const seed = workerPrivateKey;
+      kp = keyring.addFromSeed(seed);
+    } else {
+      kp = keyring.addFromUri(`//${workerPrivateKey}`);
+    }
+    const abi = new ContractAbi(jobPostJson);
+    const data = abi.messages.accepted();
+    const tx = api.tx.contract.call(contractAddr, 0, 20000, data);
+    await tx.signAndSend(kp, ({ events = [], status }) => {
+      console.log(status);
+      events.forEach(({ phase, event: { data, method, section } }) => {
+        console.log(
+          phase.toString() +
+            " : " +
+            section +
+            "." +
+            method +
+            " " +
+            data.toString()
+        );
+      });
+    });
   };
 
   componentDidMount() {
@@ -100,7 +134,7 @@ export default class ProjectStatus extends Component {
               <div className="marker m3 timeline-icon three">
                 <i className="fa fa-list" />
                 <button
-                  onClick={this.onClickHandle}
+                  onClick={this.onClickStartHandle}
                   className="button is-large"
                 >
                   Click
@@ -112,6 +146,12 @@ export default class ProjectStatus extends Component {
               <div className="marker mlast timeline-icon four">
                 <i className="fa fa-check" />
                 <span className="marker-text">Finalised</span>
+                <button
+                  onClick={this.onClickFinalisedHandle}
+                  className="button is-large"
+                >
+                  Click
+                </button>
               </div>
               {/* <!-- / marker --> */}
             </div>
