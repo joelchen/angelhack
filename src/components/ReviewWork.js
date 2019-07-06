@@ -7,7 +7,7 @@ import { hexToU8a } from "@cennznet/util";
 import { SimpleKeyring } from "@cennznet/wallet";
 import { waitReady } from "@plugnet/wasm-crypto";
 import { ContractAbi } from "@plugnet/types";
-const jobPostJson = require("../contract/job-post/target/JobPost.json");
+const jobPostJson = require("../contract/JobPost.json");
 
 export default class ProjectStatus extends Component {
   state = {
