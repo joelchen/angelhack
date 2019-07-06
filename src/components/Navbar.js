@@ -25,26 +25,52 @@ export default class Navbar extends Component {
             <h2>ack</h2>
           </Link>
         </div>
-
-        <div id="navbarBasicExample" className="navbar-menu">
-          <div className="navbar-start">
-            <NavLink to="/projects" className="navbar-item">
-              Projects
-            </NavLink>
-            <NavLink to="/" className="navbar-item">
-              Services
-            </NavLink>
-            {this.props.auth.isAuthenticated && this.props.auth.user && (
-              <Fragment>
-                <NavLink to="/postjob" className="navbar-item">
-                  Post a job
-                </NavLink>
-                <NavLink to="/disputes" className="navbar-item">
-                  Disputes
-                </NavLink>
-              </Fragment>
-            )}
+        <div className="navbar-menu">
+          <div className="navbar-item">
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">Services</a>
+              <div class="navbar-dropdown">
+                <div class="dropdown-content">
+                  <a class="dropdown-item"><b>Buyer</b></a>
+                  <NavLink to="/household-chores" className="navbar-item">
+                    Household Chores
+                  </NavLink>
+                  <NavLink to="/babysitter" className="navbar-item">
+                    Babysitter
+                  </NavLink>
+                  <NavLink to="/tuition" className="navbar-item">
+                    Tuition
+                  </NavLink>
+                  <a class="dropdown-item"><b>Seller</b></a>
+                  <NavLink to="/groceries" className="navbar-item">
+                    Groceries
+                  </NavLink>
+                  <NavLink to="/food" className="navbar-item">
+                    Food
+                  </NavLink>
+                  <NavLink to="/package-delivery" className="navbar-item">
+                    Package Delivery
+                  </NavLink>
+                </div>
+              </div>
+            </div>
           </div>
+          <NavLink to="/projects" className="navbar-item">
+            Projects
+          </NavLink>
+          <NavLink to="/" className="navbar-item">
+            
+          </NavLink>
+          {this.props.auth.isAuthenticated && this.props.auth.user && (
+            <Fragment>
+              <NavLink to="/postjob" className="navbar-item">
+                Post a job
+              </NavLink>
+              <NavLink to="/disputes" className="navbar-item">
+                Disputes
+              </NavLink>
+            </Fragment>
+          )}
 
           <div className="navbar-end">
             <div className="navbar-item">
