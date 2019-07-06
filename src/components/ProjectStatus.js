@@ -13,7 +13,7 @@ import { ContractAbi } from "@plugnet/types";
 
 import Project from "./Project";
 
-const jobPostJson = require("../abi/JobPost.json");
+const jobPostJson = require("../abi/jobPost.json");
 
 const submittedTextStyle = {
   display: "none"

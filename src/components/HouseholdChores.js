@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
 import Project from "./Project";
-// import axios from "axios";
 
 export default class HouseholdChores extends Component {
   state = {
@@ -21,22 +20,6 @@ export default class HouseholdChores extends Component {
         price: 10
       }
     ]
-  };
-
-  fetchProducts = async () => {
-    // add call to AWS API Gateway to fetch products here
-    // then set them in state
-    // try {
-    //   const res = await axios.get(`${config.api.invokeUrl}/products`);
-    //   const products = res.data;
-    //   this.setState({ products: products });
-    // } catch (err) {
-    //   console.log(`An error has occurred: ${err}`);
-    // }
-  };
-
-  componentDidMount = () => {
-    this.fetchProducts();
   };
 
   render() {

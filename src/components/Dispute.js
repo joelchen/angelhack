@@ -1,9 +1,7 @@
 import React, { Component, Fragment } from "react";
-import { Link } from "react-router-dom";
 
 export default class Dispute extends Component {
   render() {
-    console.log(this.props);
     return (
       <div className="tile is-child box notification is-ight">
         <p className="product-title">{this.props.name}</p>
@@ -11,8 +9,13 @@ export default class Dispute extends Component {
         <br />
         {this.props.register ? (
           <Fragment>
-            <Link to="">Review requester info</Link> <br />
-            <Link to="">Review worker result</Link> <br /> <br />
+            <p style={{ textDecoration: "underline", cursor: "pointer" }}>
+              Review requester info
+            </p>
+            <p style={{ textDecoration: "underline", cursor: "pointer" }}>
+              Review worker result
+            </p>
+            <br />
             <button className="button is-medium">Refund Requester</button>{" "}
             &nbsp;
             <button className="button is-medium">

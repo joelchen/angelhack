@@ -27,11 +27,13 @@ export default class Navbar extends Component {
         </div>
         <div className="navbar-menu">
           <div className="navbar-item">
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link">Services</a>
-              <div class="navbar-dropdown">
-                <div class="dropdown-content">
-                  <a class="dropdown-item"><b>Buyer</b></a>
+            <div className="navbar-item has-dropdown is-hoverable">
+              <span className="navbar-link">Services</span>
+              <div className="navbar-dropdown">
+                <div className="dropdown-content">
+                  <span className="dropdown-item">
+                    <b>Buyer</b>
+                  </span>
                   <NavLink to="/household-chores" className="navbar-item">
                     Household Chores
                   </NavLink>
@@ -41,7 +43,9 @@ export default class Navbar extends Component {
                   <NavLink to="/tuition" className="navbar-item">
                     Tuition
                   </NavLink>
-                  <a class="dropdown-item"><b>Seller</b></a>
+                  <span className="dropdown-item">
+                    <b>Seller</b>
+                  </span>
                   <NavLink to="/groceries" className="navbar-item">
                     Groceries
                   </NavLink>
@@ -58,9 +62,7 @@ export default class Navbar extends Component {
           <NavLink to="/projects" className="navbar-item">
             Projects
           </NavLink>
-          <NavLink to="/" className="navbar-item">
-            
-          </NavLink>
+          <NavLink to="/" className="navbar-item" />
           {this.props.auth.isAuthenticated && this.props.auth.user && (
             <Fragment>
               <NavLink to="/postjob" className="navbar-item">
