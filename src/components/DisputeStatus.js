@@ -20,7 +20,7 @@ export default class DisputeStatus extends Component {
         <section className="section">
           <div className="container">
             <h1>Project Status {this.state.project_id}</h1>
-            <p className="subtitle is-5">Lorem ipsum dolor sit amet</p>
+            <p className="subtitle is-5"></p>
             <br />
 
             <div id="timeline-wrap">

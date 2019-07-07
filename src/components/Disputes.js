@@ -7,16 +7,16 @@ export default class Disputes extends Component {
     disputes: [
       {
         id: 1,
-        disputename: "Dispute 1234",
+        disputename: "Project A Dispute",
         description:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+          "An hourly contract was entered into to complete the job and ABC proceeded to poorly manage timelines. Subsequently, other contractors confirmed aspects of OHF’s work were done to a less than professional standard. As an example, OHF claimed 67 hours of labor for completing a portion of work, where other subsequent quotes came back between 20-25 hours. This poor management of timelines appears to have gone on throughout the project as evidenced by the huge discrepancy between ABC's initial and final timelines.",
         register: false
       },
       {
         id: 2,
-        disputename: "Dispute 1235",
+        disputename: "Project B Dispute",
         description:
-          "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+          "It is most disgusting to have to deal with such obnoxious behaviour especially since 2016 I have been purchasing XYZ's services and now when I need to touch up or need additional product I am unable to get this after sale support. Very horrible of XYZ. You have me use your paint in my home and now you are not willing to provide after sale support by providing the necessary services.",
         register: true
       }
     ]
@@ -44,7 +44,7 @@ export default class Disputes extends Component {
         <section className="section">
           <div className="container">
             <h1>Disputes</h1>
-            <p className="subtitle is-5">Lorem ipsum dolor sit amet</p>
+            <p className="subtitle is-5"></p>
             <br />
             <div className="columns">
               <div className="column">
