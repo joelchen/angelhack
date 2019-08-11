@@ -184,6 +184,3 @@ export default class ProjectStatus extends Component {
     );
   }
 }
-
-// cennz-cli script:run -c wss://mx-angelhack-angelbackbc.ap1.onfinality.io contract-deploy /Users/ooijithong/projects/angelhack/src/contract/job-post/target/job-post.wasm 5F4eWAFjLKSpyPccSwvY55KdhT2bWwqwMHbbzHD462hkvN1t
-// cennz-cli script:run -c wss://mx-angelhack-angelbackbc.ap1.onfinality.io contract-instantiate 5F4eWAFjLKSpyPccSwvY55KdhT2bWwqwMHbbzHD462hkvN1t 0xf33164e176fb16bed08e276c81ea086c84ccd0c3cb1c75aa1353445e28bd3db8 /Users/ooijithong/projects/angelhack/src/contract/job-post/target/JobPost.json 1000 20000

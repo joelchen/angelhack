@@ -18,7 +18,7 @@ export default class ProjectStatus extends Component {
         client: "mac",
         projectname: "Macdonalds Rework Online Menu",
         description:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+          "Contract work to rework Macdonalds' online menu. Current ten pages menu needs a redesign using existing information and pricing.  The deliverable is converting the current menu into the new menu on an 81/2x11 as well as a two board wall design using same new graphics.",
         price: 20
       },
       {
@@ -26,7 +26,7 @@ export default class ProjectStatus extends Component {
         client: "pepsi",
         projectname: "Pepsi Microsite Redesign",
         description:
-          "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+          "Contract work to redesign Pepsi's microsite. We have a B2B online order microsite that we would like to redesign some of the pages to make it a little more user friendly. Would prefer if you worked out of a simple programs like Framer or Porto.io so we can collaborate and make changes.",
         price: 20
       }
     ]

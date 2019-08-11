@@ -13,7 +13,7 @@ export default class PostJob extends Component {
                   <input
                     className="input"
                     type="text"
-                    placeholder="Input Porject Name"
+                    placeholder="Input Project Name"
                   />
                 </div>
               </div>

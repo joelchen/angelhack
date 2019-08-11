@@ -4,7 +4,7 @@ import mac from "../macdonaldslogo.png";
 import pepsi from "../pepsilogo.jpg";
 import placeholder from "../placeholder.png";
 
-export default class ProductAdmin extends Component {
+export default class Project extends Component {
   render() {
     return (
       <div className="tile is-child box notification is-light">
@@ -25,11 +25,20 @@ export default class ProductAdmin extends Component {
             <br />
             {this.props.displaybutton === "true" ? (
               <Link to={"/projectstatus/" + this.props.id} className="button">
-                {this.props.price} CENNZ
+                {this.props.price} Tokens
               </Link>
             ) : (
               <div />
             )}
+
+            {this.props.buybutton === "true" ? (
+              <button className="button" is-primary>
+                Pay
+              </button>
+            ) : (
+              <div />
+            )}
+
           </div>
         </div>
       </div>

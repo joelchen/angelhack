@@ -28,7 +28,7 @@ export default class Babysitter extends Component {
         <section className="section">
           <div className="container">
             <h1>Babysitters Available</h1>
-            <p className="subtitle is-5">Lorem ipsum dolor sit amet</p>
+            <p className="subtitle is-5"></p>
             <br />
             <div className="columns">
               <div className="column">
@@ -42,6 +42,7 @@ export default class Babysitter extends Component {
                           key={project.id}
                           description={project.description}
                           price={project.price}
+                          buybutton="true"
                         />
                       ))
                     ) : (
