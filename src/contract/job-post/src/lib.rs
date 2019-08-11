@@ -34,19 +34,22 @@ contract! {
         // api to trigger boolean
         pub(external) fn completed(&mut self) {
             self.job.completed = true;
+
             env.emit(ContractOutput { result: self.job.completed });
             env.emit(ContractOutput { result: self.job.accepted });
         }
 
         pub(external) fn accepted(&mut self) {
             self.job.accepted = true;
+
             env.emit(ContractOutput { result: self.job.completed });
             env.emit(ContractOutput { result: self.job.accepted });
+
             let worker_public_key = env.caller();
             Runtime::call(
                 Decode::decode(&mut &worker_public_key.encode()[..]).expect("it is an accountID"),
                 0,      // nested gas allocation, `0` means use current meter reading
-                50,
+                10000,
                 &vec![], // empty input payload
             );
         }

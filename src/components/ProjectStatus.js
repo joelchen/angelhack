@@ -45,21 +45,34 @@ export default class ProjectStatus extends Component {
   requester = {};
 
   onClickStartHandle = async () => {
+    // without this, nothing works
     await waitReady();
+
+    // web socket endpoint
     const api = await Api.create({
       provider: "wss://mx-angelhack-angelbackbc.ap1.onfinality.io"
     });
+
     // worker account private key, must copy when account is first created
+    // should not be hardcoded
     const workerPrivateKey = hexToU8a(
       "0x6c05bb15a5cc326b5ae202dbdf6481e2bc0352fd221306a0da07af53b1d95406"
     );
-    const contractAddr = "5DYAVff4vQCz1fJjZP6F3mGrP8LCKgqWnR768M5ZsTA2DKNy";
+
+    const contractAddr = "5HXcKWDKGTvXN2VBgjMSJs7YqqjgehL2CWCdCjkDEHA7Pdh9";
+
+    // get the keyring
     const keyring = new SimpleKeyring();
     let kp = keyring.addFromSeed(workerPrivateKey);
+
+    // get the abi
     const abi = new ContractAbi(jobPostJson);
-    console.log(abi);
     const data = abi.messages.completed();
+
+    // call the smart contract
     const tx = api.tx.contract.call(contractAddr, 0, 20000, data);
+
+    // execute the transaction
     await tx.signAndSend(kp, ({ events = [], status }) => {
       console.log(status);
       events.forEach(({ phase, event: { data, method, section } }) => {
@@ -74,6 +87,7 @@ export default class ProjectStatus extends Component {
         );
       });
     });
+
     document.getElementById("submit-work").style.display = "none";
     document.getElementById("icon3circle").style.display = "none";
     document.getElementById("submitted-text").style.display = "block";
@@ -172,4 +186,4 @@ export default class ProjectStatus extends Component {
 }
 
 // cennz-cli script:run -c wss://mx-angelhack-angelbackbc.ap1.onfinality.io contract-deploy /Users/ooijithong/projects/angelhack/src/contract/job-post/target/job-post.wasm 5F4eWAFjLKSpyPccSwvY55KdhT2bWwqwMHbbzHD462hkvN1t
-// cennz-cli script:run -c wss://mx-angelhack-angelbackbc.ap1.onfinality.io contract-instantiate 5F4eWAFjLKSpyPccSwvY55KdhT2bWwqwMHbbzHD462hkvN1t 0xe6ffc3079d4c4390f7c34a1a4e5554a6a487fade4abcf0efee7983b4d6b709c1 /Users/ooijithong/projects/angelhack/src/contract/job-post/target/JobPost.json 1000 20000
+// cennz-cli script:run -c wss://mx-angelhack-angelbackbc.ap1.onfinality.io contract-instantiate 5F4eWAFjLKSpyPccSwvY55KdhT2bWwqwMHbbzHD462hkvN1t 0xf33164e176fb16bed08e276c81ea086c84ccd0c3cb1c75aa1353445e28bd3db8 /Users/ooijithong/projects/angelhack/src/contract/job-post/target/JobPost.json 1000 20000

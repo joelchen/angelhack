@@ -10,14 +10,14 @@ import config1 from "./config1";
 import * as serviceWorker from "./serviceWorker";
 // import { config } from "aws-sdk/global";
 
-Amplify.configure({
-  Auth: {
-    mandatorySignIn: true,
-    region: config1.cognito.REGION,
-    userPoolId: config1.cognito.USER_POOL_ID,
-    userPoolWebClientId: config1.cognito.APP_CLIENT_ID
-  }
-});
+// Amplify.configure({
+//   Auth: {
+//     mandatorySignIn: true,
+//     region: config1.cognito.REGION,
+//     userPoolId: config1.cognito.USER_POOL_ID,
+//     userPoolWebClientId: config1.cognito.APP_CLIENT_ID
+//   }
+// });
 
 ReactDOM.render(<App />, document.getElementById("root"));
 

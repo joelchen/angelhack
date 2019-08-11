@@ -32,7 +32,7 @@ library.add(faEdit);
 
 class App extends Component {
   state = {
-    isAuthenticated: false,
+    isAuthenticated: true,
     isAuthenticating: true,
     user: null
   };

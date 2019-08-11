@@ -41,7 +41,7 @@ export default class ProjectStatus extends Component {
     const workerPrivateKey = hexToU8a(
       "0x6c05bb15a5cc326b5ae202dbdf6481e2bc0352fd221306a0da07af53b1d95406"
     );
-    const contractAddr = "5DYAVff4vQCz1fJjZP6F3mGrP8LCKgqWnR768M5ZsTA2DKNy";
+    const contractAddr = "5HXcKWDKGTvXN2VBgjMSJs7YqqjgehL2CWCdCjkDEHA7Pdh9";
     const keyring = new SimpleKeyring();
     let kp = keyring.addFromSeed(workerPrivateKey);
     const abi = new ContractAbi(jobPostJson);
